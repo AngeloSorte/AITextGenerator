@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di Testo</title>
+</head>
+<body>
+    <h1>Inserisci il tuo prompt:</h1>
+    <form id="promptForm">
+        <input type="text" id="promptInput" placeholder="Scrivi qualcosa...">
+        <button type="button" onclick="sendPrompt()">Invia</button>
+    </form>
+    <p id="responseOutput"></p>
+
+    <script>
+        async function sendPrompt() {
+            const prompt = document.getElementById("promptInput").value;
+            const response = await fetch("/generate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ prompt: prompt })
+            });
+            const data = await response.json();
+            document.getElementById("responseOutput").innerText = data.response;
+        }
+    </script>
+</body>
+</html>
