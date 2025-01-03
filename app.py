@@ -27,8 +27,8 @@ def generate():
     prompt = data['prompt']
 
     # URL dell'API Hugging Face (ad esempio per un modello GPT-2)
-    api_url = 'https://api-inference.huggingface.co/models/bigscience/bloom"  # O puoi usare anche "EleutherAI/gpt-neo-2.7B"
-'  # Sostituisci con il tuo modello
+    api_url = 'https://api-inference.huggingface.co/models/bigscience/bloom'  
+  # Sostituisci con il tuo modello
 
     # Invio della richiesta al modello Hugging Face
     response = requests.post(api_url, headers=headers, json={"inputs": prompt})
